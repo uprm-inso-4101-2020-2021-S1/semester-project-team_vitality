@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h1>Business Registration</h2>
+<div class="register">
+    <p>To register your business in the platform, please fill out the following form:</p>
+    <form action="{{ url_for('businessRegister') }}" method="post" autocomplete="off">
+        <input type="text" name="business_name" placeholder="Business Name" id="business_name" required>
+        <input type="email" name="business_email" placeholder="Business Email" id="business_email" required>
+        <input type="text" name="business_phone" placeholder="Business Phone ###-###-####" id="business_phone" required>
+        <input type="text" name="address" placeholder="Address" id="address" required>
+        <input type="text" name="city" placeholder="City" id="city" required>
+        <input type="text" name="zip_code" placeholder="Zip Code #####" id="zip_code" required>
+        <input type="text" name="max_capacity" placeholder="Maximum Capacity" id="max_capacity" required>
+        <div class="msg">{{ msg }}</div>
+        <input type="submit" value="Register Business">
+    </form>
+</div>
+{% endblock %}
