@@ -22,5 +22,5 @@ docker-compose up -d
 To shut down the machine, we also use docker-compose. Use the command below:
 
 ```bash
-docker rm -f docker-compose down
+docker-compose down
 ```
