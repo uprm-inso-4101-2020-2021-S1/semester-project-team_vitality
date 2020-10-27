@@ -9,11 +9,19 @@ app = Flask(__name__)
 # Change this to your secret key (can be anything, it's for extra protection)
 app.secret_key = 'your secret key'
 
+# Local Db Credentials
 # Enter your database connection details below
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Vitality1!'
-app.config['MYSQL_DB'] = 'TeamVitality'
+#app.config['MYSQL_HOST'] = 'localhost'
+#app.config['MYSQL_USER'] = 'root'
+#app.config['MYSQL_PASSWORD'] = 'Vitality1!'
+#app.config['MYSQL_DB'] = 'TeamVitality'
+
+# Free MySQL Hosting Credentials
+# Enter your database connection details below
+app.config['MYSQL_HOST'] = 'sql9.freemysqlhosting.net'
+app.config['MYSQL_USER'] = 'sql9372928'
+app.config['MYSQL_PASSWORD'] = 'MJAV5SRze6'
+app.config['MYSQL_DB'] = 'sql9372928'
 
 #Initialize MySQL
 mysql = MySQL(app)
