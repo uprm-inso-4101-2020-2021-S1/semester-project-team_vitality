@@ -14,7 +14,7 @@ docker build -t back-end .
 To run the app, we use docker-compose. Execute the command below to do so:
 
 ```bash
-docker-compose up -d
+docker-compose build && docker-compose up -d
 ```
 
 # Shutting Down Machine
