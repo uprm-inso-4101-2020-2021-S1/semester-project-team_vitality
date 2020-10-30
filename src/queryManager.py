@@ -11,27 +11,27 @@ class QueryManager(object):
     #User Queries
     def login(self):
         return """
-        SELECT * FROM user 
+        SELECT * FROM users 
         WHERE username = %s AND password = %s
         """
     
     def getUserByUsername(self):
         return """
-        SELECT * FROM user WHERE username = %s
+        SELECT * FROM users WHERE username = %s
         """
 
     def register(self):
         return """
-        INSERT INTO user VALUES (NULL, %s, %s, %s, %s, %s, %s)
+        INSERT INTO users VALUES (NULL, %s, %s, %s, %s, %s, %s)
         """
     
     def updateRole(self):
         return """
-        UPDATE `sql9372928`.`user` SET `role` = %s WHERE (`userId` = '%s');
+        UPDATE `sql9372928`.`users` SET `role` = %s WHERE (`userId` = '%s');
         """
 
     #Business Queries
     def registerBusiness(self):
         return """
-        INSERT INTO business VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO businesses VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s)
         """
