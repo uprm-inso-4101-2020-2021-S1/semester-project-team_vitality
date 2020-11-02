@@ -48,3 +48,16 @@ class Users(db.Model):
     @staticmethod
     def getCustomers():
         return Users().query.filter_by(role='customer').all()
+    
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    @staticmethod
+    def updateRole(uid):
+        user = Users.getUserById(uid)
+        user.role = 'owner'
+        db.session.commit()
+        return user
+        

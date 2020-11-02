@@ -1,6 +1,7 @@
-from flask import jsonify, session
+from flask import jsonify
 from api.dao.users import Users
 from api.util.utilities import Utilities
+import re
 
 class UsersHandler:
 
@@ -102,3 +103,31 @@ class UsersHandler:
             return jsonify(status='Success!'), 200
         except Exception as e:
             return jsonify(reason="Server error", error=e.__str__()), 500
+
+    @staticmethod
+    def register(json):
+        validParams = Utilities.verify_parameters(json, ['username', 'email', 'password', 'first_name', 'last_name', 'role'])
+        validParams['role'] = 'owner'
+        checkUsername = Users.getUserByUsername(validParams['username'])
+        checkUserEmail = Users.getUserByEmail(validParams['email'])
+        if validParams:
+            try:
+                if checkUsername != None:
+                    return jsonify(reason="Username already exists!")
+                elif checkUserEmail != None:
+                    return jsonify(reason="Email already exists!")
+                elif not re.match(r'[a-zA-Z0-9]+', validParams['username']):
+                    return jsonify(reason="Username must contain only characters and numbers")
+                elif not re.match(r'[^@]+@[^@]+\.[^@]+', validParams['email']):
+                    return jsonify(reason="Invalid email address")
+                else:
+                    newUser = Users(**validParams).create()
+                    result = {
+                        "message": "Success!",
+                        "request": Utilities.to_dict(newUser)
+                    }
+                return jsonify(result), 200
+            except Exception as e:
+                return jsonify(reason="Server error", error=e.__str__()), 500
+        else:
+            return jsonify(reason="Invalid parameters"), 400

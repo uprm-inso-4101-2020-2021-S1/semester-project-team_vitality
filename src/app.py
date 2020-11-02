@@ -60,37 +60,9 @@ def getAllBusinessesByZipCode(zc):
 def getAllBusinessesByMaxCapacity(mc):
     return BusinessesHandler.getAllBusinessesByMaxCapacity(mc)
 
-
-# @app.route('/register', methods=['GET', 'POST'])
-# def register():
-#     msg=''
-#     # Check if "username", "password" and "email" POST requests exist (user submitted form)
-#     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
-#         #Map Form into User Model object
-#         userModel = models.User(username=request.form['username'], password=request.form['password'], 
-#             email=request.form['email'], first_name=request.form['first_name'], last_name=request.form['last_name'], role='customer')
-
-#         # Check if user exists using MySQL
-#         user = DL.getUserByUsername(userModel.username)
-
-#         # If user exists show error and validation checks
-#         if user:
-#             msg = 'User already exists!'
-#         elif not re.match(r'[^@]+@[^@]+\.[^@]+', userModel.email):
-#             msg = 'Invalid email address!'
-#         elif not re.match(r'[A-Za-z0-9]+', userModel.username):
-#             msg = 'Username must contain only characters and numbers!'
-#         elif not userModel.username or not userModel.password or not userModel.email:
-#             msg = 'Please fill out the form!'
-#         else:
-#             # User doesnt exists and the form data is valid, now insert new User into user table
-#             DL.register(userModel)
-#             msg = 'You have successfully registered!'
-#     elif request.method == 'POST':
-#         # Form is empty... (no POST data)
-#         msg = 'Please fill all fields!'
-#     # Show registration form with message (if any)
-#     return render_template('register.html', msg=msg)
+@app.route('/register', methods=['POST'])
+def userRegister():
+    return UsersHandler.register(request.json)
 
 # @app.route('/customer/businessRegister', methods=['GET', 'POST'])
 # def businessRegister():
@@ -129,16 +101,6 @@ def getAllBusinessesByMaxCapacity(mc):
 #             # Form is empty... (no POST data)
 #             msg = 'Please fill all fields!'
 #         return render_template('businessRegister.html', msg=msg)
-#     # User is not loggedin redirect to login page
-#     return redirect(url_for('login'))
-
-# #Business Owner Area
-# @app.route('/business/home')
-# def businessHome():
-
-# @app.route('/business/profile')
-# def businessProfile():
-
 
 
 # @app.route('/login', methods=['POST'])

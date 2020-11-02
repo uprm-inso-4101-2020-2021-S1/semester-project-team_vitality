@@ -58,15 +58,3 @@ class Businesses(db.Model):
     @staticmethod
     def getBusinessByOwner(uid):
         return Businesses().query.filter_by(business_ownerId=uid).first()
-
-    def create(self):
-        db.session.add(self)
-        db.session.commit()
-        return self
-    
-    @staticmethod
-    def updateRole(uid):
-        user = Users.getUserById(uid)
-        user.role = 'owner'
-        db.session.commit()
-        return user
