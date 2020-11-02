@@ -1,47 +1,36 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-from flask_mysqldb import MySQL
-# import MySQLdb.cursors
-# import re 
-# from dataLayer import DataLayer
-# import models
+from flask import request, redirect, url_for, session, render_template
 from api.util.config import app
 from api.handler.users import UsersHandler
+from api.handler.services import ServicesHandler
 
-# app = Flask(__name__)
-# Change this to your secret key (can be anything, it's for extra protection)
-# app.secret_key = 'your secret key'
-
-# Local Db Credentials
-# Enter your database connection details below
-#app.config['MYSQL_HOST'] = 'localhost'
-#app.config['MYSQL_USER'] = 'root'
-#app.config['MYSQL_PASSWORD'] = 'Vitality1!'
-#app.config['MYSQL_DB'] = 'TeamVitality'
-
-# Free MySQL Hosting Credentials
-# Enter your database connection details below
-# app.config['MYSQL_HOST'] = 'sql9.freemysqlhosting.net'
-# app.config['MYSQL_USER'] = 'sql9372928'
-# app.config['MYSQL_PASSWORD'] = 'MJAV5SRze6'
-# app.config['MYSQL_DB'] = 'sql9372928'
-
-#Initialize MySQL
-# mysql = MySQL(app)
-#Initialize Datalayer
-# DL = DataLayer(mysql)
-
-@app.route("/")
+@app.route('/')
 def main():
     return "hi"
-    # return redirect(url_for('login'))
 
-@app.route("/users", methods=['GET'])
+@app.route('/users', methods=['GET'])
 def getAllUsers():
     return UsersHandler.getAllUsers()
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    return UsersHandler.login(request.json)
+@app.route('/users/<int:uid>', methods=['GET'])
+def getUserById(uid):
+    return UsersHandler.getUserById(uid)
+
+@app.route('/owners', methods=['GET'])
+def getOwners():
+    return UsersHandler.getOwners()
+
+@app.route('/customers', methods=['GET'])
+def getCustomers():
+    return UsersHandler.getCustomers()
+
+@app.route('/services', methods=['GET'])
+def getAllServices():
+    return ServicesHandler.getAllServices()
+
+@app.route('/services/<int:sid>', methods=['GET'])
+def getServicesById(sid):
+    return ServicesHandler.getServiceById(sid)
+
 #     msg = ''
 #     # Check if "username" and "password" POST requests exist (user submitted form)
 #     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
@@ -197,6 +186,17 @@ def login():
 #     return redirect(url_for('login'))
 
 
+
+
+
+
+# @app.route('/login', methods=['POST'])
+# def login():
+#     return UsersHandler.login(request.json)
+
+# @app.route('/logout', methods=['GET'])
+# def login():
+#     return UsersHandler.logout()
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

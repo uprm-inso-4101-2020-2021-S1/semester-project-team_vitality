@@ -27,7 +27,7 @@ class UsersHandler:
             users_dict = Utilities.to_dict(user)
             result = {
                 "message": "Success!",
-                "users": user_dict
+                "users": users_dict
             }
             return jsonify(result), 200
         except Exception as e:
@@ -40,7 +40,7 @@ class UsersHandler:
             users_dict = Utilities.to_dict(user)
             result = {
                 "message": "Success!",
-                "users": user_dict
+                "users": users_dict
             }
             return jsonify(result), 200
         except Exception as e:
@@ -55,7 +55,7 @@ class UsersHandler:
                 users_list.append(Utilities.to_dict(user))
             result = {
                 "message": "Success!",
-                "users": user_list
+                "users": users_list
             }
             return jsonify(result), 200
         except Exception as e:
@@ -70,7 +70,7 @@ class UsersHandler:
                 users_list.append(Utilities.to_dict(user))
             result = {
                 "message": "Success!",
-                "users": user_list
+                "users": users_list
             }
             return jsonify(result), 200
         except Exception as e:
@@ -79,7 +79,7 @@ class UsersHandler:
     @staticmethod
     def login(json):
         try:
-            if json['email'] == "" or json['password'] == "":
+            if json['username'] == "" or json['password'] == "":
                 return jsonify(reason="Must fill username and password fields"), 400
             user = Users.getUserByUsername(json['username'])
             user_dict = Utilities.to_dict(user)
