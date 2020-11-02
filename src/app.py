@@ -1,7 +1,8 @@
 from flask import request
 from api.util.config import app
-from api.handler.users import UsersHandler
 from api.handler.services import ServicesHandler
+from api.handler.users import UsersHandler
+from api.handler.businesses import BusinessesHandler
 
 @app.route('/')
 def main():
@@ -30,6 +31,35 @@ def getAllServices():
 @app.route('/services/<int:sid>', methods=['GET'])
 def getServicesById(sid):
     return ServicesHandler.getServiceById(sid)
+
+@app.route('/businesses', methods=['GET'])
+def getAllBusinesses():
+    return BusinessesHandler.getAllBusinesses()
+
+@app.route('/businesses/<int:bid>', methods=['GET'])
+def getBusinessById(bid):
+    return BusinessesHandler.getBusinessById(bid)
+
+@app.route('/businesses/services/<int:sid>', methods=['GET'])
+def getBusinessesByService(sid):
+    return BusinessesHandler.getBusinessesByService(sid)
+
+@app.route('/businesses/owner/<int:uid>', methods=['GET'])
+def getBusinessByOwner(uid):
+    return BusinessesHandler.getBusinessByOwner(uid)
+
+# @app.route('/businesses/<string:ct>', methods=['GET'])
+# def getAllBusinessByCity(ct):
+#     return BusinessesHandler.getAllBusinessByCity(ct)
+
+# @app.route('/businesses/<string:zc>', methods=['GET'])
+# def getAllBusinessByZipCode(zc):
+#     return BusinessesHandler.getAllBusinessByZipCode(zc)
+
+# @app.route('/businesses/<string:mc>', methods=['GET'])
+# def getAllBusinessByMaxCapacity(mc):
+#     return BusinessesHandler.getAllBusinessByMaxCapacity(mc)
+
 
 # @app.route('/register', methods=['GET', 'POST'])
 # def register():

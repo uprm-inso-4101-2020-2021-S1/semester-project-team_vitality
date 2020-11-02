@@ -10,8 +10,8 @@ class Users(db.Model):
     username = db.Column(db.String(50), nullable=False, unique=True)
     role = db.Column(db.String(10), nullable=False)
 
+    business = db.relationship("Businesses")
     # appointment = db.relationship("Appointment")
-    # business = db.relationship("Businesses")
 
     def __init__(self, **args):
         self.first_name = args.get('first_name')

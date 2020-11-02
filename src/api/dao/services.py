@@ -5,7 +5,7 @@ class Services(db.Model):
     serviceId = db.Column(db.Integer, primary_key=True)
     service_name = db.Column(db.String(50), nullable=False)
 
-    # business = db.relationship("Businesses")
+    business = db.relationship("Businesses")
 
     def __init__(self, **args):
         self.service_name = args.get('service_name')
