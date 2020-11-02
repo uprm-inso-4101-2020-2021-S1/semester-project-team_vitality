@@ -73,7 +73,7 @@ class DataLayer(object):
         cursor = self.mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(self.queryManager.registerBusiness(), (business.business_name, 
         business.address, business.city, business.zip_code,business.business_email,
-        business.business_phone, business.max_capacity, business.business_ownerId))
+        business.business_phone, business.max_capacity, business.business_ownerId, business.serviceId))
         #Execute command
         self.mysql.connection.commit()
 
