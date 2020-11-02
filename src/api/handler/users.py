@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify, session
 from api.dao.users import Users
 from api.util.utilities import Utilities
 import re

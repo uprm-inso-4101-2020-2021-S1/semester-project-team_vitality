@@ -4,9 +4,9 @@ from api.handler.services import ServicesHandler
 from api.handler.users import UsersHandler
 from api.handler.businesses import BusinessesHandler
 
-@app.route('/')
-def main():
-    return "hi"
+@app.route('/', methods=['GET'])
+def home():
+    return "Hi"
 
 @app.route('/users', methods=['GET'])
 def getAllUsers():
@@ -103,13 +103,13 @@ def userRegister():
 #         return render_template('businessRegister.html', msg=msg)
 
 
-# @app.route('/login', methods=['POST'])
-# def login():
-#     return UsersHandler.login(request.json)
+@app.route('/login', methods=['POST'])
+def login():
+    return UsersHandler.login(request.json)
 
-# @app.route('/logout', methods=['GET'])
-# def login():
-#     return UsersHandler.logout()
+@app.route('/logout', methods=['GET'])
+def logout():
+    return UsersHandler.logout()
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
