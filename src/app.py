@@ -1,4 +1,4 @@
-from flask import request, redirect, url_for, session, render_template
+from flask import request
 from api.util.config import app
 from api.handler.users import UsersHandler
 from api.handler.services import ServicesHandler
@@ -31,34 +31,6 @@ def getAllServices():
 def getServicesById(sid):
     return ServicesHandler.getServiceById(sid)
 
-#     msg = ''
-#     # Check if "username" and "password" POST requests exist (user submitted form)
-#     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-#         # Create variables for easy access
-#         username = request.form['username']
-#         password = request.form['password']
-
-#         #Fetch User by username and password
-#         user = DL.login(username,password)
-
-#         # If user exists in users table in out database
-#         if user:
-#             # Create session data, we can access this data in other routes
-#             session['loggedin'] = True
-#             session['id'] = user['userId']
-#             session['username'] = user['username']
-#             session['role'] = user['role']
-            
-#             # Redirect to home page depending on role
-#             if user['role'] == 'customer':
-#                 return redirect(url_for('home'))
-#             else:
-#                 return redirect(url_for('businessHome'))
-#         else:
-#             # user doesnt exist or username/password incorrect
-#             msg = 'Incorrect username/password!'
-#     return render_template('login.html', msg=msg)
-
 # @app.route('/register', methods=['GET', 'POST'])
 # def register():
 #     msg=''
@@ -89,37 +61,6 @@ def getServicesById(sid):
 #         msg = 'Please fill all fields!'
 #     # Show registration form with message (if any)
 #     return render_template('register.html', msg=msg)
-
-# @app.route('/logout')
-# def logout():
-#     # Remove session data, this will log the user out
-#     session.pop('loggedin', None)
-#     session.pop('id', None)
-#     session.pop('username', None)
-#     session.pop('role', None)
-#     # Redirect to login page
-#     return redirect(url_for('login'))
-
-# #Customer Area
-# @app.route('/customer/home')
-# def home():
-#     # Check if user is loggedin
-#     if 'loggedin' in session:
-#         # User is loggedin show them the home page
-#         return render_template('home.html', username=session['username'])
-#     # User is not loggedin redirect to login page
-#     return redirect(url_for('login'))
-
-# @app.route('/customer/profile')
-# def profile():
-#     # Check if user is loggedin and its role
-#     if 'loggedin' in session and session['role'] == 'customer':
-#         # We need all the account info for the user so we can display it on the profile page
-#         account = DL.getUserByUsername(session['username'])
-#         # Show the profile page with account info
-#         return render_template('profile.html', account=account)
-#     # User is not loggedin redirect to login page
-#     return redirect(url_for('login'))
 
 # @app.route('/customer/businessRegister', methods=['GET', 'POST'])
 # def businessRegister():
@@ -164,29 +105,9 @@ def getServicesById(sid):
 # #Business Owner Area
 # @app.route('/business/home')
 # def businessHome():
-#     if 'loggedin'in session and session['role'] == 'owner':
-#         #TODO: fetch and show business info
-
-#         #Show the business home page
-#         return render_template('businessHome.html', username=session['username'])
-#     # User is not loggedin redirect to login page
-#     return redirect(url_for('login'))
 
 # @app.route('/business/profile')
 # def businessProfile():
-#     if 'loggedin' in session and session['role'] == 'owner':
-#         # We need all the account info for the user so we can display it on the profile page
-#         account = DL.getUserByUsername(session['username'])
-
-#         #TODO: fetch and show business info
-
-#         #Show the business profile with business info
-#         return render_template('businessProfile.html', account=account)
-#     # User is not loggedin redirect to login page
-#     return redirect(url_for('login'))
-
-
-
 
 
 
