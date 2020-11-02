@@ -107,7 +107,7 @@ class UsersHandler:
     @staticmethod
     def register(json):
         validParams = Utilities.verify_parameters(json, ['username', 'email', 'password', 'first_name', 'last_name', 'role'])
-        validParams['role'] = 'owner'
+        validParams['role'] = 'customer'
         checkUsername = Users.getUserByUsername(validParams['username'])
         checkUserEmail = Users.getUserByEmail(validParams['email'])
         if validParams:

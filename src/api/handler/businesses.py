@@ -1,6 +1,7 @@
 from flask import jsonify, session
 from api.dao.businesses import Businesses
 from api.util.utilities import Utilities
+from api.dao.users import Users
 
 class BusinessesHandler:
 
@@ -105,3 +106,21 @@ class BusinessesHandler:
             return jsonify(result), 200
         except Exception as e:
             return jsonify(reason="Server error", error=e.__str__()), 500
+
+    @staticmethod
+    def businessRegister(json):
+        validParams = Utilities.verify_parameters(json, ['business_name', 'address', 'city', 'zip_code', 
+        'business_email', 'business_phone', 'max_capacity', 'business_ownerId', 'serviceId'])
+        if validParams:
+            try:
+                Users.updateRole(validParams['business_ownerId'])
+                newBusiness = Businesses(**validParams).create()
+                result = {
+                    "message": "Success!",
+                    "request": Utilities.to_dict(newBusiness)
+                }
+                return jsonify(result), 200
+            except Exception as e:
+                return jsonify(reason="Server error", error=e.__str__()), 500
+        else:
+            return jsonify(reason="Invalid parameters"), 400
