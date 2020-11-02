@@ -14,9 +14,9 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_connection
 app.secret_key = "vitality"
 
-app.config["SESSION_PERMANENT"] = True
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
+# app.config["SESSION_PERMANENT"] = True
+# app.config["SESSION_TYPE"] = "filesystem"
+# Session(app)
 
 db = SQLAlchemy(app)
 CORS(app)
