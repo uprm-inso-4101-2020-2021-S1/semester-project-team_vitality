@@ -1,2 +1,4 @@
 Flask==1.1.2
 Flask_MySQLdb==0.2.0
+pyjwt==1.7.1
+flask_cors==3.0.7
