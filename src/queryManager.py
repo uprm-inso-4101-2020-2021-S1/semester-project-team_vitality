@@ -33,5 +33,5 @@ class QueryManager(object):
     #Business Queries
     def registerBusiness(self):
         return """
-        INSERT INTO businesses VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO businesses VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
