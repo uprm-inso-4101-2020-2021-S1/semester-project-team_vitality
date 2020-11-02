@@ -2,6 +2,7 @@ from flask import jsonify, session
 from api.dao.businesses import Businesses
 from api.util.utilities import Utilities
 from api.dao.users import Users
+import re
 
 class BusinessesHandler:
 
@@ -113,6 +114,16 @@ class BusinessesHandler:
         'business_email', 'business_phone', 'max_capacity', 'business_ownerId', 'serviceId'])
         if validParams:
             try:
+                if not re.match(r'[A-Za-z0-9]+', validParams['business_name']):
+                    return jsonify(reason="Business name must contain only characters and numbers")
+                if not re.match(r'[^@]+@[^@]+\.[^@]+', validParams['business_email']):
+                    return jsonify(reason="Invalid email address")
+                elif not re.search(r'\w{3}-\w{3}-\w{4}', validParams['business_phone']):
+                    return jsonify(reason="The format for business phone is: ###-###-####")
+                elif not re.match(r'[0-9]{5}', validParams['zip_code']):
+                    return jsonify(reason="The format for zip code is: #####")
+                elif not re.match(r'[0-9]', validParams['max_capacity']):
+                    return jsonify(reason="Max capacity must be a number")
                 Users.updateRole(validParams['business_ownerId'])
                 newBusiness = Businesses(**validParams).create()
                 result = {

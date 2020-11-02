@@ -120,12 +120,11 @@ class UsersHandler:
                     return jsonify(reason="Username must contain only characters and numbers")
                 elif not re.match(r'[^@]+@[^@]+\.[^@]+', validParams['email']):
                     return jsonify(reason="Invalid email address")
-                else:
-                    newUser = Users(**validParams).create()
-                    result = {
-                        "message": "Success!",
-                        "request": Utilities.to_dict(newUser)
-                    }
+                newUser = Users(**validParams).create()
+                result = {
+                    "message": "Success!",
+                    "request": Utilities.to_dict(newUser)
+                }
                 return jsonify(result), 200
             except Exception as e:
                 return jsonify(reason="Server error", error=e.__str__()), 500

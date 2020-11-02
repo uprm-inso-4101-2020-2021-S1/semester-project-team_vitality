@@ -68,18 +68,6 @@ def userRegister():
 def businessRegister():
     return BusinessesHandler.businessRegister(request.json)
 
-# # Validation checks
-# if not re.match(r'[^@]+@[^@]+\.[^@]+', businessModel.business_email):
-#     msg = 'Invalid business email address.'
-# elif not re.match(r'[A-Za-z0-9]+', businessModel.business_name):
-#     msg = 'Business name must contain only characters and numbers.'
-# elif not re.search('\w{3}-\w{3}-\w{4}', businessModel.business_phone):
-#     msg = 'The format for business phone is: ###-###-####.'
-# elif not re.match('[0-9]{5}', businessModel.zip_code):
-#     msg = 'The format for zip code is: #####'
-# elif not re.match('^[0-9 -]+$', businessModel.max_capacity):
-#     msg = 'Max Capacity must be a number.'
-
 @app.route('/login', methods=['POST'])
 def login():
     return UsersHandler.login(request.json)
