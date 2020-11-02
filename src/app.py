@@ -48,17 +48,17 @@ def getBusinessesByService(sid):
 def getBusinessByOwner(uid):
     return BusinessesHandler.getBusinessByOwner(uid)
 
-# @app.route('/businesses/<string:ct>', methods=['GET'])
-# def getAllBusinessByCity(ct):
-#     return BusinessesHandler.getAllBusinessByCity(ct)
+@app.route('/businesses/city/<ct>', methods=['GET'])
+def getAllBusinessesByCity(ct):
+    return BusinessesHandler.getAllBusinessesByCity(ct)
 
-# @app.route('/businesses/<string:zc>', methods=['GET'])
-# def getAllBusinessByZipCode(zc):
-#     return BusinessesHandler.getAllBusinessByZipCode(zc)
+@app.route('/businesses/zipcode/<zc>', methods=['GET'])
+def getAllBusinessesByZipCode(zc):
+    return BusinessesHandler.getAllBusinessesByZipCode(zc)
 
-# @app.route('/businesses/<string:mc>', methods=['GET'])
-# def getAllBusinessByMaxCapacity(mc):
-#     return BusinessesHandler.getAllBusinessByMaxCapacity(mc)
+@app.route('/businesses/maxcapacity/<mc>', methods=['GET'])
+def getAllBusinessesByMaxCapacity(mc):
+    return BusinessesHandler.getAllBusinessesByMaxCapacity(mc)
 
 
 # @app.route('/register', methods=['GET', 'POST'])
