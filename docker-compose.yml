@@ -1,0 +1,19 @@
+version: "3"
+services:
+    nextjs:
+        ports:
+            - 3000:3000
+        build: ./ui/aa-app
+        links:
+            - "backend"
+        volumes:
+            - ./ui/aa-app:/usr/src/app
+
+    backend:
+        build: ./src
+        ports:
+            - 5000:5000
+        volumes:
+            - ./:/app
+        environment:
+            FLASK_ENV: development
