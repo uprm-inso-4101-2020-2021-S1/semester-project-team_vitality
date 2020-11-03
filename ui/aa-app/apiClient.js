@@ -13,10 +13,10 @@ class APIClient {
 
     }
 
-    login() {
+    login(username, password) {
         client.post('/login', {
-            username: "test",
-            password: "test"
+            username,
+            password
           
         })
         .then(function (response) {
@@ -28,5 +28,6 @@ class APIClient {
         
     }
 }
+
 
 export default APIClient;

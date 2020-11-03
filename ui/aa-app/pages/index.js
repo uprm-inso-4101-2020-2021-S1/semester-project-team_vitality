@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 export default function Home() {
   const apiClient = new APIClient();
 
-  apiClient.login();
+  apiClient.login("test", "test");
   return (
     <div>
       <Head>
