@@ -10,10 +10,23 @@ services:
             - ./ui/aa-app:/usr/src/app
 
     backend:
-        build: ./src
         ports:
             - 5000:5000
+        build: ./src
+        links:
+            - "db"
         volumes:
             - ./:/app
         environment:
             FLASK_ENV: development
+            DATABASE_URL: postgres://arrangeall:arrangeall@db:5432/arrangealldb
+
+    db:
+        image: postgres:12-alpine
+        environment:
+            - POSTGRES_USER=arrangeall
+            - POSTGRES_PASSWORD=arrangeall
+            - POSTGRES_DB=arrangealldb
+        volumes:
+            - ./db:/docker-entrypoint-initdb.d/:ro
+   

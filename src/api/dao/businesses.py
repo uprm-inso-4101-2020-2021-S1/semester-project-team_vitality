@@ -11,7 +11,7 @@ class Businesses(db.Model):
     business_email = db.Column(db.String(150), nullable=False)
     business_phone = db.Column(db.String(12), nullable=False)
     max_capacity = db.Column(db.Integer, nullable=False)
-    business_ownerId = db.Column(db.Integer, db.ForeignKey('users.userId'), nullable=False)
+    business_ownerId = db.Column(db.Integer, db.ForeignKey('users.userid'), nullable=False)
     serviceId = db.Column(db.Integer, db.ForeignKey('services.serviceId'), nullable=True)
     
     # appointment = db.relationship("Appointment")

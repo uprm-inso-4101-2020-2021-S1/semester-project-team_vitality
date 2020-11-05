@@ -11,14 +11,14 @@ class Appointment(db.Model):
     end_time = db.Column(db.DateTime, nullable=False)
     confirmation_number = db.Column(db.Integer, nullable=True)
     businessId = db.Column(db.Integer, db.ForeignKey('businesses.businessId'), nullable=False)
-    userId = db.Column(db.Integer, db.ForeignKey('users.userId'), nullable=True)
+    userid = db.Column(db.Integer, db.ForeignKey('users.userid'), nullable=True)
 
     def __init__(self, **args):
         self.start_time = args.get('start_time')
         self.end_time = args.get('end_time')
         self.confirmation_number = args.get('confirmation_number')
         self.businessId = args.get('businessId')
-        self.userId = args.get('userId')
+        self.userid = args.get('userid')
     
     @property
     def primaryKey(self):
@@ -30,7 +30,7 @@ class Appointment(db.Model):
 
     @staticmethod
     def getApptByUser(uid):
-        return Appointment().query.filter_by(userId=uid).all()
+        return Appointment().query.filter_by(userid=uid).all()
     
     @staticmethod
     def getApptByBusiness(bid):
@@ -44,7 +44,7 @@ class Appointment(db.Model):
     @staticmethod
     def updateAppt(aid, uid):
         appt = Appointment.getApptById(aid)
-        appt.userId = uid
+        appt.userid = uid
         appt.confirmation_number = randint(0,1000)
         db.session.commit()
         return appt
@@ -52,7 +52,7 @@ class Appointment(db.Model):
     @staticmethod
     def cancelAppt(aid):
         appt = Appointment.getApptById(aid)
-        appt.userId = None
+        appt.userid = None
         appt.confirmation_number = None
         db.session.commit()
         return appt

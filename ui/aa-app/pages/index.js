@@ -59,7 +59,7 @@ export default function Home() {
     fetch('api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({username: "test", password: "test"}),
+      body: JSON.stringify({username: "carlos", password: "carlos"}),
     }).then((res) => {
       console.log("hit then");
       if (res.status === 200) router.push('/profile');
