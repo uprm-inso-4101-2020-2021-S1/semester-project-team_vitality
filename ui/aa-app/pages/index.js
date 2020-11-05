@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 // Material-UI
@@ -50,19 +50,23 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Home() {
-  const [user, setUser] = useState("");
-  const [pass, setPass] = useState("");
+  const form = useRef(null);
+
   const router = useRouter();
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
+    const formData = new FormData(form.current);
+    const req = {};
+    formData.forEach((value, key) => req[key] = value);
+    console.log(req);
 
     fetch('api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({username: "test", password: "test"}),
-    }).then((res) => {
+      body: JSON.stringify(req),
+    }).then(res => {
       console.log("hit then");
-      if (res.status === 200) router.push('/profile');
+      if (res.statusCode === 200) router.push('/profile');
     })
   }, []);
 
@@ -79,17 +83,16 @@ export default function Home() {
         <Typography component="h1" variant="h5">
           Sign in
           </Typography>
-        <form className={classes.form} onSubmit={handleSubmit}>
+        <form ref={form} className={classes.form} onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
             id="username"
-            label="Email Address"
+            label="Username"
             name="username"
             autoFocus
-            onChange={(e) => setUser(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -100,7 +103,6 @@ export default function Home() {
             label="Password"
             type="password"
             id="password"
-            onChange={(e) => setPass(e.target.value)}
           />
           {/* Future Implementation of Remember Me */}
           {/* <FormControlLabel
