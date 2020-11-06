@@ -2,7 +2,7 @@ from api.util.config import db
 
 class Services(db.Model):
     __tablename__ = 'services'
-    serviceId = db.Column(db.Integer, primary_key=True)
+    serviceid = db.Column(db.Integer, primary_key=True)
     service_name = db.Column(db.String(50), nullable=False)
 
     business = db.relationship("Businesses")
@@ -15,7 +15,7 @@ class Services(db.Model):
     
     @property
     def primaryKey(self):
-        return self.service_id
+        return self.serviceid
 
     @staticmethod
     def getServices():
@@ -23,4 +23,4 @@ class Services(db.Model):
     
     @staticmethod
     def getServiceById(sid):
-        return Services().query.filter_by(serviceId=sid).first()
+        return Services().query.filter_by(serviceid=sid).first()

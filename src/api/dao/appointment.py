@@ -6,27 +6,27 @@ import datetime
 
 class Appointment(db.Model):
     __tablename__ = 'appointment'
-    apptId = db.Column(db.Integer, primary_key=True)
-    start_time = db.Column(db.DateTime, nullable=False)
-    end_time = db.Column(db.DateTime, nullable=False)
+    apptid = db.Column(db.Integer, primary_key=True)
+    start_time = db.Column(db.DateTime, default=datetime.datetime.now(datetime.timezone.utc).astimezone)
+    end_time = db.Column(db.DateTime)
     confirmation_number = db.Column(db.Integer, nullable=True)
-    businessId = db.Column(db.Integer, db.ForeignKey('businesses.businessId'), nullable=False)
+    businessid = db.Column(db.Integer, db.ForeignKey('businesses.businessid'), nullable=False)
     userid = db.Column(db.Integer, db.ForeignKey('users.userid'), nullable=True)
 
     def __init__(self, **args):
         self.start_time = args.get('start_time')
         self.end_time = args.get('end_time')
         self.confirmation_number = args.get('confirmation_number')
-        self.businessId = args.get('businessId')
+        self.businessId = args.get('businessid')
         self.userid = args.get('userid')
     
     @property
     def primaryKey(self):
-        return self.apptId
+        return self.apptid
 
     @staticmethod
     def getApptById(aid):
-        return Appointment().query.filter_by(apptId=aid).first()
+        return Appointment().query.filter_by(apptid=aid).first()
 
     @staticmethod
     def getApptByUser(uid):
@@ -34,7 +34,7 @@ class Appointment(db.Model):
     
     @staticmethod
     def getApptByBusiness(bid):
-        return Appointment().query.filter_by(businessId=bid).all()
+        return Appointment().query.filter_by(businessid=bid).all()
 
     def create(self):
         db.session.add(self)

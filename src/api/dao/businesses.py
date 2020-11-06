@@ -3,7 +3,7 @@ from api.dao.users import Users
 
 class Businesses(db.Model):
     __tablename__ = 'businesses'
-    businessId = db.Column(db.Integer, primary_key=True)
+    businessid = db.Column(db.Integer, primary_key=True)
     business_name = db.Column(db.String(100), nullable=False)
     address = db.Column(db.String(150), nullable=False)
     city = db.Column(db.String(50), nullable=False)
@@ -12,7 +12,7 @@ class Businesses(db.Model):
     business_phone = db.Column(db.String(12), nullable=False)
     max_capacity = db.Column(db.Integer, nullable=False)
     business_ownerId = db.Column(db.Integer, db.ForeignKey('users.userid'), nullable=False)
-    serviceId = db.Column(db.Integer, db.ForeignKey('services.serviceId'), nullable=True)
+    serviceid = db.Column(db.Integer, db.ForeignKey('services.serviceid'), nullable=True)
     
     # appointment = db.relationship("Appointment")
 
@@ -25,11 +25,11 @@ class Businesses(db.Model):
         self.zip_code = args.get('zip_code')
         self.max_capacity = args.get('max_capacity')
         self.business_ownerId = args.get('business_ownerId')
-        self.serviceId = args.get('serviceId')
+        self.serviceId = args.get('serviceid')
 
     @property
     def primaryKey(self):
-        return self.business_id
+        return self.businessid
 
     @staticmethod
     def getBusinesses():
@@ -37,7 +37,7 @@ class Businesses(db.Model):
     
     @staticmethod
     def getBusinessById(bid):
-        return Businesses().query.filter_by(businessId=bid).first()
+        return Businesses().query.filter_by(businessid=bid).first()
 
     @staticmethod
     def getAllBusinessesByCity(ct):
@@ -53,7 +53,7 @@ class Businesses(db.Model):
 
     @staticmethod
     def getBusinessesByService(sid):
-        return Businesses().query.filter_by(serviceId=sid).all()
+        return Businesses().query.filter_by(serviceid=sid).all()
 
     @staticmethod
     def getBusinessByOwner(uid):
