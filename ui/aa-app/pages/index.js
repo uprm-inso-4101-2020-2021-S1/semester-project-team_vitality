@@ -51,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
   const form = useRef(null);
-
   const router = useRouter();
+
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     const formData = new FormData(form.current);
@@ -65,8 +65,8 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(req),
     }).then(res => {
-      console.log("hit then");
-      if (res.statusCode === 200) router.push('/profile');
+      console.log(res);
+      if (res.status === 200) router.push('/profile');
     })
   }, []);
 
