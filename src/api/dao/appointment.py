@@ -6,35 +6,35 @@ import datetime
 
 class Appointment(db.Model):
     __tablename__ = 'appointment'
-    apptid = db.Column(db.Integer, primary_key=True)
+    appt_id = db.Column(db.Integer, primary_key=True)
     start_time = db.Column(db.DateTime, default=datetime.datetime.now(datetime.timezone.utc).astimezone)
     end_time = db.Column(db.DateTime)
     confirmation_number = db.Column(db.Integer, nullable=True)
-    businessid = db.Column(db.Integer, db.ForeignKey('businesses.businessid'), nullable=False)
-    userid = db.Column(db.Integer, db.ForeignKey('users.userid'), nullable=True)
+    business_id = db.Column(db.Integer, db.ForeignKey('businesses.business_id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
 
     def __init__(self, **args):
         self.start_time = args.get('start_time')
         self.end_time = args.get('end_time')
         self.confirmation_number = args.get('confirmation_number')
-        self.businessId = args.get('businessid')
-        self.userid = args.get('userid')
+        self.business_id = args.get('business_id')
+        self.user_id = args.get('user_id')
     
     @property
     def primaryKey(self):
-        return self.apptid
+        return self.appt_id
 
     @staticmethod
     def getApptById(aid):
-        return Appointment().query.filter_by(apptid=aid).first()
+        return Appointment().query.filter_by(appt_id=aid).first()
 
     @staticmethod
     def getApptByUser(uid):
-        return Appointment().query.filter_by(userid=uid).all()
+        return Appointment().query.filter_by(user_id=uid).all()
     
     @staticmethod
     def getApptByBusiness(bid):
-        return Appointment().query.filter_by(businessid=bid).all()
+        return Appointment().query.filter_by(business_id=bid).all()
 
     def create(self):
         db.session.add(self)
@@ -44,7 +44,7 @@ class Appointment(db.Model):
     @staticmethod
     def updateAppt(aid, uid):
         appt = Appointment.getApptById(aid)
-        appt.userid = uid
+        appt.user_id = uid
         appt.confirmation_number = randint(0,1000)
         db.session.commit()
         return appt
@@ -52,7 +52,7 @@ class Appointment(db.Model):
     @staticmethod
     def cancelAppt(aid):
         appt = Appointment.getApptById(aid)
-        appt.userid = None
+        appt.user_id = None
         appt.confirmation_number = None
         db.session.commit()
         return appt

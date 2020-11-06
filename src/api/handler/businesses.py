@@ -111,7 +111,7 @@ class BusinessesHandler:
     @staticmethod
     def businessRegister(json):
         validParams = Utilities.verify_parameters(json, ['business_name', 'address', 'city', 'zip_code', 
-        'business_email', 'business_phone', 'max_capacity', 'business_ownerId', 'serviceId'])
+        'business_email', 'business_phone', 'max_capacity', 'owner_id', 'service_id'])
         if validParams:
             try:
                 if not re.match(r'[A-Za-z0-9]+', validParams['business_name']):
@@ -124,7 +124,7 @@ class BusinessesHandler:
                     return jsonify(reason="The format for zip code is: #####")
                 elif not re.match(r'[0-9]', validParams['max_capacity']):
                     return jsonify(reason="Max capacity must be a number")
-                Users.updateRole(validParams['business_ownerId'])
+                Users.updateRole(validParams['owner_id'])
                 newBusiness = Businesses(**validParams).create()
                 result = {
                     "message": "Success!",

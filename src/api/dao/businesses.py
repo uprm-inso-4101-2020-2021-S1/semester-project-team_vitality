@@ -3,7 +3,7 @@ from api.dao.users import Users
 
 class Businesses(db.Model):
     __tablename__ = 'businesses'
-    businessid = db.Column(db.Integer, primary_key=True)
+    business_id = db.Column(db.Integer, primary_key=True)
     business_name = db.Column(db.String(100), nullable=False)
     address = db.Column(db.String(150), nullable=False)
     city = db.Column(db.String(50), nullable=False)
@@ -11,8 +11,8 @@ class Businesses(db.Model):
     business_email = db.Column(db.String(150), nullable=False)
     business_phone = db.Column(db.String(12), nullable=False)
     max_capacity = db.Column(db.Integer, nullable=False)
-    business_ownerId = db.Column(db.Integer, db.ForeignKey('users.userid'), nullable=False)
-    serviceid = db.Column(db.Integer, db.ForeignKey('services.serviceid'), nullable=True)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    service_id = db.Column(db.Integer, db.ForeignKey('services.service_id'), nullable=True)
     
     # appointment = db.relationship("Appointment")
 
@@ -24,12 +24,12 @@ class Businesses(db.Model):
         self.city = args.get('city')
         self.zip_code = args.get('zip_code')
         self.max_capacity = args.get('max_capacity')
-        self.business_ownerId = args.get('business_ownerId')
-        self.serviceId = args.get('serviceid')
+        self.owner_id = args.get('owner_id')
+        self.service_id = args.get('service_id')
 
     @property
     def primaryKey(self):
-        return self.businessid
+        return self.business_id
 
     @staticmethod
     def getBusinesses():
@@ -37,7 +37,7 @@ class Businesses(db.Model):
     
     @staticmethod
     def getBusinessById(bid):
-        return Businesses().query.filter_by(businessid=bid).first()
+        return Businesses().query.filter_by(business_id=bid).first()
 
     @staticmethod
     def getAllBusinessesByCity(ct):
@@ -53,11 +53,11 @@ class Businesses(db.Model):
 
     @staticmethod
     def getBusinessesByService(sid):
-        return Businesses().query.filter_by(serviceid=sid).all()
+        return Businesses().query.filter_by(service_id=sid).all()
 
     @staticmethod
     def getBusinessByOwner(uid):
-        return Businesses().query.filter_by(business_ownerId=uid).first()
+        return Businesses().query.filter_by(owner_id=uid).first()
 
     def create(self):
         db.session.add(self)

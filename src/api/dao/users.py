@@ -2,7 +2,7 @@ from api.util.config import db
 
 class Users(db.Model):
     __tablename__ = 'users'
-    userid = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(150), nullable=False)
@@ -23,7 +23,7 @@ class Users(db.Model):
 
     @property
     def primaryKey(self):
-        return self.userid
+        return self.user_id
     
     @staticmethod
     def getUsers():
@@ -31,7 +31,7 @@ class Users(db.Model):
 
     @staticmethod
     def getUserById(uid):
-        return Users().query.filter_by(userid=uid).first()
+        return Users().query.filter_by(user_id=uid).first()
     
     @staticmethod
     def getUserByEmail(uemail):
