@@ -24,6 +24,10 @@ class Appointment(db.Model):
     def primaryKey(self):
         return self.appt_id
 
+    @staticmethod 
+    def getAppointments():
+        return Appointment().query.all()
+
     @staticmethod
     def getApptById(aid):
         return Appointment().query.filter_by(appt_id=aid).first()
@@ -35,6 +39,10 @@ class Appointment(db.Model):
     @staticmethod
     def getApptByBusiness(bid):
         return Appointment().query.filter_by(business_id=bid).all()
+
+    @staticmethod
+    def getApptByStartTime(dt):
+        return Appointment().query.filter_by(start_time=dt).all()
 
     def create(self):
         db.session.add(self)
