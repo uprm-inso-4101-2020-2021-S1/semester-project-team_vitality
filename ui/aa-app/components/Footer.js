@@ -5,7 +5,7 @@ const Footer = () => {
         <footer id="footer">
         <div>
             <p>
-                &copy; ArrangeAll&trade; - Team Vitality 
+                &copy; Copyright ArrangeAll 2020
             </p>
         </div>
     </footer>

@@ -8,7 +8,6 @@ class Header extends Component {
                 <div className="center">
                     {/* LOGO */}
                     <div id="logo">
-                        <img src="" className="app-logo" alt="" />
                         <span id="brand">
                             <strong>Arrange</strong>All&trade;
                         </span>
@@ -18,16 +17,16 @@ class Header extends Component {
                     <nav id="menu">
                         <ul>
                             <li>
-                                <a href="#">Home</a>
+                                <a href="/">Home</a>
                             </li>
                             <li>
-                                <a href="#">Appointments</a>
+                                <a href="/register">Register</a>
                             </li>
                             <li>
-                                <a href="#">Register</a>
+                                <a href="/signin">Sign In</a>
                             </li>
                             <li>
-                                <a href="#">Sample</a>
+                                <a href="/profile">Profile</a>
                             </li>
                         </ul>
                     </nav>

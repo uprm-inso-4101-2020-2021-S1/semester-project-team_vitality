@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 export default function SignIn() {
     const form = useRef(null);
     const router = useRouter();
@@ -65,40 +64,9 @@ export default function SignIn() {
             <CssBaseline />
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                    Register
+                    Sign in
                 </Typography>
                 <form ref={form} className={classes.form} onSubmit={handleSubmit}>
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="name"
-                        label="Name"
-                        name="name"
-                        autoFocus
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="lastname"
-                        label="Last Name"
-                        name="lastname"
-                        autoFocus
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        label="Email"
-                        type='email'
-                        name="email"
-                        autoFocus
-                    />
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -119,6 +87,11 @@ export default function SignIn() {
                         type="password"
                         id="password"
                     />
+                    {/* Future Implementation of Remember Me */}
+                    {/* <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              /> */}
                     <Button
                         type="submit"
                         fullWidth
@@ -126,8 +99,20 @@ export default function SignIn() {
                         color="primary"
                         className={classes.submit}
                     >
-                        Sign Up
+                        Sign In
                     </Button>
+                    <Grid container>
+                        <Grid item xs>
+                            <Link href="/forgotpassword" variant="body2">
+                                Forgot password?
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Link href="/register" variant="body2">
+                                {"Don't have an account? Sign Up"}
+                            </Link>
+                        </Grid>
+                    </Grid>
                 </form>
             </div>
         </Container>
