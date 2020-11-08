@@ -1,3 +1,5 @@
+import GridContainer from "../src/components/Grid/GridContainer.js"
+
 export default function Profile() {
-    return <h1>TODO</h1>
+    return <GridContainer />
 }

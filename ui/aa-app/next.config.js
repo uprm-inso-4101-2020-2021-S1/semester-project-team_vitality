@@ -1,10 +1,13 @@
-module.exports = {
-    webpackDevMiddleware: config => {
-      config.watchOptions = {
-        poll: 1000,
-        aggregateTimeout: 300,
-      }
-  
-      return config
-    },
-  }
+const withPlugins = require("next-compose-plugins");
+const withImages = require("next-images");
+const withSass = require("@zeit/next-sass");
+const withCSS = require("@zeit/next-css");
+const webpack = require("webpack");
+const path = require("path");
+
+module.exports = withPlugins([[withSass], [withImages], [withCSS]], {
+  webpack(config, options) {
+    config.resolve.modules.push(path.resolve("./"));
+    return config;
+  },
+});
