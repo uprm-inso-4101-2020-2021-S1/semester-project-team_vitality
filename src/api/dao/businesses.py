@@ -14,7 +14,7 @@ class Businesses(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     service_id = db.Column(db.Integer, db.ForeignKey('services.service_id'), nullable=True)
     
-    # appointment = db.relationship("Appointment")
+    appointment = db.relationship("Appointment")
 
     def __init__(self, **args):
         self.business_name = args.get('business_name')
