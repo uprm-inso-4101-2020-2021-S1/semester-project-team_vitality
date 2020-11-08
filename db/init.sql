@@ -26,9 +26,9 @@ owner_id INT NOT NULL REFERENCES users(user_id),
 service_id INT REFERENCES services(service_id));
 
 CREATE TABLE appointment (
-appt_id BIGSERIAL NOT NULL PRIMARY KEY, 
-start_time TIMESTAMP NOT NULL,
-end_time TIMESTAMP NOT NULL,
+appt_id BIGSERIAL NOT NULL PRIMARY KEY,
+start_time TIMESTAMP,
+end_time TIMESTAMP,
 confirmation_number INT,
 business_id INT NOT NULL REFERENCES businesses(business_id),
 user_id INT REFERENCES users(user_id));

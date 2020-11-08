@@ -7,7 +7,7 @@ import datetime
 class Appointment(db.Model):
     __tablename__ = 'appointment'
     appt_id = db.Column(db.Integer, primary_key=True)
-    start_time = db.Column(db.DateTime, default=datetime.datetime.now(datetime.timezone.utc).astimezone)
+    start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
     confirmation_number = db.Column(db.Integer, nullable=True)
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.business_id'), nullable=False)

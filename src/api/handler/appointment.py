@@ -3,6 +3,7 @@ from api.dao.appointment import Appointment
 from api.dao.businesses import Businesses
 from api.util.utilities import Utilities
 from api.dao.users import Users
+import datetime as dt
 
 class AppointmentHandler:
 
@@ -17,7 +18,7 @@ class AppointmentHandler:
                 "message": "Success!",
                 "businesses": appt_list                
             }
-            return jsoinfy(result), 200
+            return jsonify(result), 200
         except Exception as e:
             return jsonify(reason="Server error", error=e.__str__()), 500
     
@@ -30,7 +31,7 @@ class AppointmentHandler:
                 "message": "Success!",
                 "businesses": appt_dict                
             }
-            return jsoinfy(result), 200
+            return jsonify(result), 200
         except Exception as e:
             return jsonify(reason="Server error", error=e.__str__()), 500
     
@@ -45,7 +46,7 @@ class AppointmentHandler:
                 "message": "Success!",
                 "businesses": appt_list                
             }
-            return jsoinfy(result), 200
+            return jsonify(result), 200
         except Exception as e:
             return jsonify(reason="Server error", error=e.__str__()), 500
 
@@ -60,7 +61,7 @@ class AppointmentHandler:
                 "message": "Success!",
                 "businesses": appt_list                
             }
-            return jsoinfy(result), 200
+            return jsonify(result), 200
         except Exception as e:
             return jsonify(reason="Server error", error=e.__str__()), 500
 
@@ -75,7 +76,52 @@ class AppointmentHandler:
                 "message": "Success!",
                 "businesses": appt_list                
             }
-            return jsoinfy(result), 200
+            return jsonify(result), 200
+        except Exception as e:
+            return jsonify(reason="Server error", error=e.__str__()), 500
+
+    @staticmethod
+    def createAppt(json):
+        validParams = Utilities.verify_parameters(json, ['business_id', 'start_time', 'end_time'])
+        validParams['start_time'] = dt.datetime.now()
+        validParams['end_time'] = dt.datetime.now()
+        if validParams:
+            try:
+                newAppt = Appointment(**validParams).create()
+                result = {
+                    "message": "Success!",
+                    "request": Utilities.to_dict(newAppt)
+                }
+                return jsonify(result), 200
+            except Exception as e:
+                return jsonify(reason="Server error", error=e.__str__()), 500
+        else:
+            return jsonify(reason="Invalid parameters"), 400
+    
+    @staticmethod
+    def userRegisterAppt(aid, uid):
+        try:
+            appt = Appointment.updateAppt(aid, uid)
+            result = {
+                "message": "Success!",
+                "request": Utilities.to_dict(appt)
+            }
+            return jsonify(result), 200
+        except Exception as e:
+            return jsonify(reason="Server error", error=e.__str__()), 500
+
+    @staticmethod
+    def userCancelAppt(aid):
+        try:
+            checkAppt = Appointment.getApptById(aid)
+            if(checkAppt.user_id == None):
+                return jsonify(reason="Appointment does not have a customer register"), 406
+            appt = Appointment.cancelAppt(aid)
+            result = {
+                "message": "Success!",
+                "request": Utilities.to_dict(appt)
+            }
+            return jsonify(result), 200
         except Exception as e:
             return jsonify(reason="Server error", error=e.__str__()), 500
 

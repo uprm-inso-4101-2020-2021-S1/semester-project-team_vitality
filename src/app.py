@@ -3,6 +3,7 @@ from api.util.config import app
 from api.handler.services import ServicesHandler
 from api.handler.users import UsersHandler
 from api.handler.businesses import BusinessesHandler
+from api.handler.appointment import AppointmentHandler
 
 @app.route('/', methods=['GET'])
 def home():
@@ -75,6 +76,34 @@ def login():
 @app.route('/logout', methods=['GET'])
 def logout():
     return UsersHandler.logout()
+
+@app.route('/appointments', methods=['GET'])
+def getAllAppointments():
+    return AppointmentHandler.getAllAppointments()
+
+@app.route('/appointments/<int:aid>', methods=['GET'])
+def getApptById(aid):
+    return AppointmentHandler.getApptById(aid)
+
+@app.route('/appointments/user/<int:uid>', methods=['GET'])
+def getAllUserAppt(uid):
+    return AppointmentHandler.getAllUserAppt(uid)
+
+@app.route('/appointments/business/<int:bid>', methods=['GET'])
+def getAllBusinessAppt(bid):
+    return AppointmentHandler.getAllBusinessAppt(bid)
+
+@app.route('/appointment/create', methods=['POST'])
+def createAppt():
+    return AppointmentHandler.createAppt(request.json)
+
+@app.route('/appointment/<int:aid>/register/user/<int:uid>', methods=['POST'])
+def userRegisterAppt(aid, uid):
+    return AppointmentHandler.userRegisterAppt(aid, uid)
+
+@app.route('/appointment/cancel/<int:aid>', methods=['POST'])
+def userCancelAppt(aid):
+    return AppointmentHandler.userCancelAppt(aid)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
