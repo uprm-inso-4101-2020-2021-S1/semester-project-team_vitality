@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -31,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
+
 
 export default function SignIn() {
     const form = useRef(null);
@@ -60,11 +59,11 @@ export default function SignIn() {
     const classes = useStyles();
     // Login Component (Default)
     return (
-        <Container id='signin-container'component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Register
                 </Typography>
                 <form ref={form} className={classes.form} onSubmit={handleSubmit}>
                     <TextField
@@ -72,9 +71,9 @@ export default function SignIn() {
                         margin="normal"
                         required
                         fullWidth
-                        id="username"
-                        label="Username"
-                        name="username"
+                        id="businessname"
+                        label="Business Name"
+                        name="businessname"
                         autoFocus
                     />
                     <TextField
@@ -82,16 +81,61 @@ export default function SignIn() {
                         margin="normal"
                         required
                         fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
+                        id="address"
+                        label="Address"
+                        name="address"
+                        autoFocus
                     />
-                    {/* Future Implementation of Remember Me */}
-                    {/* <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              /> */}
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="city"
+                        label="City"
+                        name="city"
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="zipcode"
+                        label="Zip Code"
+                        name="zipcode"
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="businessemail"
+                        label="Business Email"
+                        type='email'
+                        name="businessemail"
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="maxcapacity"
+                        label="Max Capacity"
+                        name="maxcapacity"
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="ownerid"
+                        label="Owner ID"
+                        id="ownerid"
+                    />
                     <Button
                         type="submit"
                         fullWidth
@@ -99,20 +143,8 @@ export default function SignIn() {
                         color="primary"
                         className={classes.submit}
                     >
-                        Sign In
+                        Sign Up
                     </Button>
-                    <Grid container>
-                        <Grid item xs>
-                            <Link href="/forgotpassword" variant="body2">
-                                Forgot password?
-                            </Link>
-                        </Grid>
-                        <Grid item>
-                            <Link href="/register" variant="body2">
-                                {"Don't have an account? Sign Up"}
-                            </Link>
-                        </Grid>
-                    </Grid>
                 </form>
             </div>
         </Container>

@@ -137,7 +137,6 @@ a {
   text-transform: uppercase;
   text-shadow: none;
   text-decoration: none;
-  /* line-height: 35px; */
   box-shadow: 0px 0px 5px rgb(88, 88, 88);
   margin-top: 40px;
   border-radius: 4px;
@@ -157,6 +156,31 @@ a {
   margin-top: 0.2px;
   padding: 0px;
   padding-top: 53px;
+}
+
+#registergrid{
+  padding: 40px;
+  flex-grow: 1;
+}
+
+#registergrid .card{
+  height: 300px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid rgba(73,155,234,1);
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgb(88, 88, 88);
+}
+
+#registergrid 
+.card:hover,
+.card:focus,
+.card:active {
+  color:rgba(73,155,234,1);
+}
+
+#signin-container {
+  padding-bottom: 60px;
 }
 
 #footer{
