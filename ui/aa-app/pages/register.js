@@ -24,7 +24,7 @@ export default function OutlinedCard() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <a href="/registerc" class="btn-white">Get started</a>
+                            <a href="/registerc" class="btn-white">Register</a>
                         </CardActions>
                     </Card>
                 </Grid>
@@ -42,7 +42,7 @@ export default function OutlinedCard() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <a href="/registerb" class="btn-white">Get started</a>
+                            <a href="/registerb" class="btn-white">Register</a>
                         </CardActions>
                     </Card>
                 </Grid>

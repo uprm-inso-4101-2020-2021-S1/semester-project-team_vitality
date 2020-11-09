@@ -5,6 +5,7 @@ class Header extends Component {
     render() {
         return (
             <header id="header">
+                <div id='border-top'></div>
                 <div className="center">
                     {/* LOGO */}
                     <div id="logo">

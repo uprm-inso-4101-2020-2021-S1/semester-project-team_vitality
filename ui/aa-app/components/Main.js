@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 class Main extends Component {
     render() {
@@ -24,11 +25,10 @@ class Main extends Component {
                     </Container>
                 </div>
                 <div>
-                    <Container maxWidth='xs'>
-                        <div id='card'>
-                            <OutlinedCard />
-                        </div>
-                    </Container>
+                    <Cards />
+                </div>
+                <div id='bbar'>
+                    <BBar />
                 </div>
             </React.Fragment>
 
@@ -37,14 +37,6 @@ class Main extends Component {
 }
 
 const useStyles = makeStyles({
-    root: {
-        minWidth: 275,
-    },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
     title: {
         fontSize: 14,
     },
@@ -53,69 +45,87 @@ const useStyles = makeStyles({
     },
 });
 
-function OutlinedCard() {
+function Cards() {
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
 
     return (
         <React.Fragment>
-            <div>
-                <Card className={classes.root} variant="outlined">
-                    <CardContent>
-                        <Typography variant="h5" component="h2">
-                            Get more time, every day
-                        </Typography>
-                        <hr />
-                        <Typography variant="body2" component="p">
-                            <h4>Not only will ArrangeAll appointment booking software help you to protect your business; our innovative
-                            features will help you deliver an exceptional client experience.
-                            </h4>
-                        </Typography>
-                    </CardContent>
-                </Card>
+            <div id='main-grid'>
+                <Container maxWidth='lg'>
+                    <Grid container spacing={6}>
+                        <Grid item xs={6}>
+                            <Card className='card' variant="outlined">
+                                <CardContent>
+                                    <Typography variant="h5" component="h2">
+                                        Get more time, every day
+                                    </Typography>
+                                    <hr />
+                                    <Typography color="textSecondary" gutterBottom>
+                                        <h4>Not only will ArrangeAll appointment booking software help you to protect your business; our innovative
+                                        features will help you deliver an exceptional client experience.
+                                        </h4>
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Card className='card' variant="outlined">
+                                <CardContent>
+                                    <Typography variant="h5" component="h2">
+                                        Organize better your appointments
+                                    </Typography>
+                                    <hr />
+                                    <Typography color="textSecondary" gutterBottom>
+                                        <h4>Not only will ArrangeAll appointment booking software help you to protect your business; our innovative
+                                        features will help you deliver an exceptional client experience.
+                                </h4>
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    </Grid>
+                </Container>
+                {/* <br/>
+                <br/> */}
+                <Container id='mid-container' maxWidth='sm'>
+                    <Grid item xs={12} alignItems="center">
+                        <Card className='card' variant="outlined">
+                            <CardContent>
+                                <Typography variant="h5" component="h2">
+                                    Keep track of your appointments
+                                </Typography>
+                                <hr />
+                                <Typography color="textSecondary" gutterBottom>
+                                    <h4>Not only will ArrangeAll appointment booking software help you to protect your business; our innovative
+                                    features will help you deliver an exceptional client experience.
+                                </h4>
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </Container>
             </div>
-            <div>
-                <Card className={classes.root} variant="outlined">
-                    <CardContent>
-                        <Typography variant="h5" component="h2">
-                            Organize better your appointments
-                        </Typography>
-                        <hr />
-                        <Typography variant="body2" component="p">
-                            <h4>Not only will ArrangeAll appointment booking software help you to protect your business; our innovative
-                            features will help you deliver an exceptional client experience.
-                            </h4>
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </div>
-            <div>
-                <Card className={classes.root} variant="outlined">
-                    <CardContent>
-                        <Typography variant="h5" component="h2">
-                            Keep track of your appointments
-                        </Typography>
-                        <hr />
-                        <Typography variant="body2" component="p">
-                            <h4>Not only will ArrangeAll appointment booking software help you to protect your business; our innovative
-                            features will help you deliver an exceptional client experience.
-                            </h4>
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </div>
-            <div>
-                <Card className={classes.root} variant="outlined">
-                    <CardContent>
-                        <Typography variant="body2" component="p">
-                            <h4>Not only will ArrangeAll appointment booking software help you to protect your business; our innovative
-                            features will help you deliver an exceptional client experience.
-                            </h4>
-                            <a href="/register" class="btn-white">Get started</a>
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </div>
+        </React.Fragment>
+    );
+}
+
+function BBar() {
+    return (
+        <React.Fragment>
+            <Container id='bbar-container' maxWidth='md'>
+                <Grid item xs={12}>
+                    <Card id='bbar-card' variant="outlined">
+                        <CardContent>
+                            <Typography gutterBottom>
+                                <h4>Not only will ArrangeAll appointment booking software help you to protect your business; our innovative
+                                features will help you deliver an exceptional client experience.
+                                </h4>
+                                <a href="/register" class="bbar-button">Get started</a>
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Container>
         </React.Fragment>
     );
 }
