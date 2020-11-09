@@ -32,29 +32,47 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
+
+const loginUser = async req => {
+    const res = await fetch('api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(req),
+    });
+
+    const body = await res.json();
+
+    const response = {
+        status: res.status,
+        body
+    };
+
+    return response;
+
+};
+
 export default function SignIn() {
     const form = useRef(null);
     const router = useRouter();
 
-    const handleSubmit = useCallback((e) => {
+    const handleSubmit = useCallback(async e => {
         e.preventDefault();
         const formData = new FormData(form.current);
         const req = {};
         formData.forEach((value, key) => req[key] = value);
-        console.log(req);
 
-        fetch('api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(req),
-        }).then(res => {
-            console.log(res);
-            if (res.status === 200) router.push('/profile');
-        })
+        const res = await loginUser(req);
+
+        if(res.status === 200) {
+            router.push(`/dashboard?uid=${res.body.user.user_id}`)
+        }
+
+        
     }, []);
 
     useEffect(() => {
-        router.prefetch('/profile');
+        router.prefetch('/dashboard');
     }, [])
 
     const classes = useStyles();

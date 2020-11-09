@@ -1,8 +1,40 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Router, useRouter } from 'next/router'
 
-class Header extends Component {
+const Header = () => {
+    const router = useRouter();
 
-    render() {
+    if (router.pathname.includes("dashboard")) {
+        return (
+            <header id="header">
+                <div className="center">
+                    {/* LOGO */}
+                    <div id="logo">
+                        <span id="brand">
+                            <strong>Arrange</strong>All&trade;
+                            </span>
+                    </div>
+
+                    {/* MENU */}
+                    <nav id="menu">
+                        <ul>
+                            <li>
+                                <a href={router.pathname}>Home</a>
+                            </li>
+                            <li>
+                                <a href="/profile">Profile</a>
+                            </li>
+                            <li>
+                                <a href="/">Logout</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+        )
+    }
+
+    else {
         return (
             <header id="header">
                 <div className="center">
@@ -25,15 +57,13 @@ class Header extends Component {
                             <li>
                                 <a href="/signin">Sign In</a>
                             </li>
-                            <li>
-                                <a href="/profile">Profile</a>
-                            </li>
                         </ul>
                     </nav>
                 </div>
             </header>
         );
     }
+
 }
 
 export default Header;
