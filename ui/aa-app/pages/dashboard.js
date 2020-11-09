@@ -48,7 +48,7 @@ export default function Dashboard({ appointments }) {
                 {appointments.map(elem => (
                     <Grid item spacing={3} xs={12} sm={6} md={3} key={appointments.indexOf(elem)}>
                         <Paper elevation={3}>
-                            <CardHeader title="Business" subheader={`Confirmation Number: ${elem.confirmation_number}`} />
+                            <CardHeader title={elem.business_name} subheader={`Confirmation Number: ${elem.confirmation_number}`} />
                             <CardContent>
                                 <Typography variant="p" gutterBottom>
                                     Starts: {elem.start_time} <br />
@@ -68,7 +68,7 @@ export async function getServerSideProps(context) {
 
     const body = await res.data;
 
-    const appointments = { appointments: body.businesses };
+    const appointments = { appointments: body.appointments };
 
     return {
         props: appointments,
