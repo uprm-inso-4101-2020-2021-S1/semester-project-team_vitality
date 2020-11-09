@@ -28,7 +28,7 @@ class BusinessesHandler:
             business_dict = Utilities.to_dict(business)
             result = {
                 "message": "Success!",
-                "businesses": business_dict
+                "business": business_dict
             }
             return jsonify(result), 200
         except Exception as e:
@@ -102,7 +102,7 @@ class BusinessesHandler:
             business_dict = Utilities.to_dict(business)
             result = {
                 "message": "Success!",
-                "businesses": business_dict
+                "business": business_dict
             }
             return jsonify(result), 200
         except Exception as e:

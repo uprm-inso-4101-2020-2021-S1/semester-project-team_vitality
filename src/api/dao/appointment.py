@@ -11,6 +11,7 @@ class Appointment(db.Model):
     end_time = db.Column(db.DateTime)
     confirmation_number = db.Column(db.Integer, nullable=True)
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.business_id'), nullable=False)
+    business_name = db.Column(db.String(50), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
 
     def __init__(self, **args):
@@ -18,6 +19,7 @@ class Appointment(db.Model):
         self.end_time = args.get('end_time')
         self.confirmation_number = args.get('confirmation_number')
         self.business_id = args.get('business_id')
+        self.business_name = args.get('business_name')
         self.user_id = args.get('user_id')
     
     @property
