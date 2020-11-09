@@ -31,6 +31,7 @@ start_time TIMESTAMP,
 end_time TIMESTAMP,
 confirmation_number INT,
 business_id INT NOT NULL REFERENCES businesses(business_id),
+business_name VARCHAR(100) NOT NULL,
 user_id INT REFERENCES users(user_id));
 
 INSERT INTO services(service_name) VALUES ('food');

@@ -16,7 +16,7 @@ class AppointmentHandler:
                 appt_list.append(Utilities.to_dict(appt))
             result = {
                 "message": "Success!",
-                "businesses": appt_list                
+                "appointments": appt_list                
             }
             return jsonify(result), 200
         except Exception as e:
@@ -29,7 +29,7 @@ class AppointmentHandler:
             appt_dict = Utilities.to_dict(appt)
             result = {
                 "message": "Success!",
-                "businesses": appt_dict                
+                "appointment": appt_dict                
             }
             return jsonify(result), 200
         except Exception as e:
@@ -44,7 +44,7 @@ class AppointmentHandler:
                 appt_list.append(Utilities.to_dict(appt))
             result = {
                 "message": "Success!",
-                "businesses": appt_list                
+                "appointments": appt_list,        
             }
             return jsonify(result), 200
         except Exception as e:
@@ -59,7 +59,7 @@ class AppointmentHandler:
                 appt_list.append(Utilities.to_dict(appt))
             result = {
                 "message": "Success!",
-                "businesses": appt_list                
+                "appointments": appt_list                
             }
             return jsonify(result), 200
         except Exception as e:
@@ -74,7 +74,7 @@ class AppointmentHandler:
                 appt_list.append(Utilities.to_dict(appt))
             result = {
                 "message": "Success!",
-                "businesses": appt_list                
+                "appointments": appt_list                
             }
             return jsonify(result), 200
         except Exception as e:
@@ -82,7 +82,8 @@ class AppointmentHandler:
 
     @staticmethod
     def createAppt(json):
-        validParams = Utilities.verify_parameters(json, ['business_id', 'start_time', 'end_time'])
+        validParams = Utilities.verify_parameters(json, ['business_id', 'business_name', 'start_time', 'end_time'])
+        validParams['business_name'] = Businesses().getBusinessById(validParams['business_id']).business_name
         validParams['start_time'] = dt.datetime.now()
         validParams['end_time'] = dt.datetime.now()
         if validParams:
