@@ -51,3 +51,5 @@ INSERT INTO users(first_name, last_name, email, password, username, role) VALUES
 INSERT INTO businesses(business_name, address, city, zip_code, business_email, business_phone, max_capacity, owner_id, service_id) VALUES ('Jaranas', 'Calle Post', 'maya', '00680', 'jaranas@gmail.com', '787-111-2222', 25, 3, 1);
 
 INSERT INTO appointment(start_time, end_time, confirmation_number, business_id, user_id) VALUES ('2020-11-12 12:30:00', '2020-11-12 1:00:00', 1234, 1, 1);
+INSERT INTO appointment(start_time, end_time, confirmation_number, business_id, user_id) VALUES ('2020-11-13 12:30:00', '2020-11-13 1:00:00', 5678, 1, 1);
+INSERT INTO appointment(start_time, end_time, confirmation_number, business_id, user_id) VALUES ('2020-11-14 12:30:00', '2020-11-14 1:00:00', 4321, 1, 1);

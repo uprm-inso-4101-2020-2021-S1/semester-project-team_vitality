@@ -30,34 +30,14 @@ const useStyles = makeStyles(theme => ({
 export default function Dashboard({ appointments }) {
     const classes = useStyles();
 
-    let cards = [];
-
-    const cardCreator = (item, index) => {
-        cards.push(<Paper elevation={3}>
-            <Card className={classes.card}>
-                <CardContent>
-                    <Typography className={classes.title} color="textSecondary" gutterbottom>
-                        Appointment #{index}
-                    </Typography>
-                    <Typography variant="h5" component="h2">
-                        Jarana
-            </Typography>
-                    <Typography variant="body2" component="p">
-                        Confirmation Number: {item.confirmation_number}
-                    </Typography>
-
-                </CardContent>
-            </Card>
-        </Paper>);
-    };
-
     console.log(appointments.length);
-
-    appointments.forEach(cardCreator);
 
     return (
         <div className={classes.root}>
-            <h1>Appointments</h1>
+            <Typography variant="h2" align="center">
+                Appointments
+            </Typography>
+            <br />
             <Grid
                 container
                 spacing={2}
@@ -66,16 +46,16 @@ export default function Dashboard({ appointments }) {
                 alignItems="flex-start"
             >
                 {appointments.map(elem => (
-                    <Grid xs={12} sm={6} md={3} key={appointments.indexOf(elem)}>
-                        <CardHeader title="Business" subheader={`Confirmation Number: ${elem.confirmation_number}`} />
-                        <CardContent>
-                            <Typography variant="h5" gutterBottom>
-                                Starts: {elem.start_time}
-                            </Typography>
-                            <Typography variant="h5">
-                                Ends: {elem.end_time}
-                            </Typography>
-                        </CardContent>
+                    <Grid item spacing={3} xs={12} sm={6} md={3} key={appointments.indexOf(elem)}>
+                        <Paper elevation={3}>
+                            <CardHeader title="Business" subheader={`Confirmation Number: ${elem.confirmation_number}`} />
+                            <CardContent>
+                                <Typography variant="p" gutterBottom>
+                                    Starts: {elem.start_time} <br />
+                                    Ends: {elem.end_time}
+                                </Typography>
+                            </CardContent>
+                        </Paper>
                     </Grid>
                 ))}
             </Grid>
