@@ -17,8 +17,6 @@ a {
   height: 120px;
   width: 100%;
   background: white;
-  border-bottom: 1px solid #ccc;
-  border-top: 5px solid #3cb2d3;
 }
 
 .center{
@@ -48,10 +46,18 @@ a {
   float: left;
 }
 
+#border-top {
+  width: 100%;
+  height: 5px;
+  background-color: rgba(73,155,234,1);
+  border-bottom: black;
+}
+
 #menu{
   width: 70%;
   float:right;
   font-size: 18px;
+  border-top: black;
 }
 
 #menu ul{
@@ -83,6 +89,8 @@ a {
   height: 280px;
   color: white;
   text-shadow: 0px 0px 5px #444;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 
   /*DEGRADADO CSS*/
   background: rgba(73,155,234,1);
@@ -114,6 +122,63 @@ a {
   text-align: center;
 }
 
+#bbar{
+  width: 100%;
+  height: 300px;
+  color: white;
+  text-shadow: 0px 0px 5px #444;
+  border-top: 1px solid #3cb2d3;
+  border-bottom: 1px solid #3cb2d3;
+
+  /*DEGRADADO CSS*/
+  background: #EFEFEF;
+  background: -moz-radial-gradient(center, ellipse cover, #EFEFEF 0%,#EFEFEF 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(73,155,234,1)), color-stop(100%, #EFEFEF));
+  background: -webkit-radial-gradient(center, ellipse cover, #EFEFEF 0%,#EFEFEF 100%);
+  background: -o-radial-gradient(center, ellipse cover, #EFEFEF 0%, #EFEFEF 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #EFEFEF 0%, #EFEFEF 100%);
+  background: radial-gradient(ellipse at center, #EFEFEF 0%, #EFEFEF 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#51aff7', GradientType=1 );
+}
+
+#bbar-card {
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: rgba(73,155,234,1);
+  box-shadow: 0px 0px 5px rgb(88, 88, 88);
+}
+
+#bbar-container {
+  padding-top: 50px;
+}
+
+.bbar-button{
+  display: block;
+  background: white;
+  color:rgba(73,155,234,1);;
+  padding: 10px;
+  width: 150px;
+  height: 40px;
+  margin: 0px auto;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: none;
+  text-decoration: none;
+  box-shadow: 0px 0px 5px rgb(88, 88, 88);
+  margin-top: 40px;
+  border-radius: 4px;
+  transition: 300ms all;
+}
+
+.bbar-button:hover{
+  background: #444;
+  color:white;
+}
+
 #card {
   margin-top: 60px;
   margin-bottom: 60px;
@@ -137,7 +202,6 @@ a {
   text-transform: uppercase;
   text-shadow: none;
   text-decoration: none;
-  /* line-height: 35px; */
   box-shadow: 0px 0px 5px rgb(88, 88, 88);
   margin-top: 40px;
   border-radius: 4px;
@@ -157,6 +221,50 @@ a {
   margin-top: 0.2px;
   padding: 0px;
   padding-top: 53px;
+}
+
+#registergrid{
+  padding: 40px;
+  flex-grow: 1;
+}
+
+#registergrid .card{
+  height: 300px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid rgba(73,155,234,1);
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgb(88, 88, 88);
+  background-color: #EFEFEF;
+}
+
+#registergrid 
+.card:hover,
+.card:focus,
+.card:active {
+  color:rgba(73,155,234,1);
+}
+
+#main-grid {
+  padding: 50px;
+}
+
+#main-grid .card {
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  border: 2px solid rgba(73,155,234,1);
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgb(88, 88, 88);
+  background-color: #EFEFEF;
+}
+
+#mid-container {
+  margin-top: 50px;
+}
+
+#signin-container {
+  padding-bottom: 60px;
 }
 
 #footer{

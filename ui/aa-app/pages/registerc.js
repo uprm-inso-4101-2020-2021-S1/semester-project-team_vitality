@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -33,58 +31,72 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-const loginUser = async req => {
-    const res = await fetch('api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(req),
-    });
-
-    const body = await res.json();
-
-    const response = {
-        status: res.status,
-        body
-    };
-
-    return response;
-
-};
-
 export default function SignIn() {
     const form = useRef(null);
     const router = useRouter();
 
-    const handleSubmit = useCallback(async e => {
+    const handleSubmit = useCallback((e) => {
         e.preventDefault();
         const formData = new FormData(form.current);
         const req = {};
         formData.forEach((value, key) => req[key] = value);
+        console.log(req);
 
-        const res = await loginUser(req);
-
-        if(res.status === 200) {
-            router.push(`/dashboard?uid=${res.body.user.user_id}`)
-        }
-
-        
+        fetch('api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(req),
+        }).then(res => {
+            console.log(res);
+            if (res.status === 200) router.push('/profile');
+        })
     }, []);
 
     useEffect(() => {
-        router.prefetch('/dashboard');
+        router.prefetch('/profile');
     }, [])
 
     const classes = useStyles();
     // Login Component (Default)
     return (
-        <Container id='signin-container'component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Register
                 </Typography>
                 <form ref={form} className={classes.form} onSubmit={handleSubmit}>
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="name"
+                        label="Name"
+                        name="name"
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="lastname"
+                        label="Last Name"
+                        name="lastname"
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email"
+                        type='email'
+                        name="email"
+                        autoFocus
+                    />
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -105,11 +117,6 @@ export default function SignIn() {
                         type="password"
                         id="password"
                     />
-                    {/* Future Implementation of Remember Me */}
-                    {/* <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              /> */}
                     <Button
                         type="submit"
                         fullWidth
@@ -117,20 +124,8 @@ export default function SignIn() {
                         color="primary"
                         className={classes.submit}
                     >
-                        Sign In
+                        Sign Up
                     </Button>
-                    <Grid container>
-                        <Grid item xs>
-                            <Link href="/forgotpassword" variant="body2">
-                                Forgot password?
-                            </Link>
-                        </Grid>
-                        <Grid item>
-                            <Link href="/register" variant="body2">
-                                {"Don't have an account? Sign Up"}
-                            </Link>
-                        </Grid>
-                    </Grid>
                 </form>
             </div>
         </Container>
