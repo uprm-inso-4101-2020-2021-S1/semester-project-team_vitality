@@ -13,6 +13,7 @@ class Appointment(db.Model):
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.business_id'), nullable=False)
     business_name = db.Column(db.String(50), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
+    number_of_customers = db.Column(db.Integer, nullable=True)
 
     def __init__(self, **args):
         self.start_time = args.get('start_time')

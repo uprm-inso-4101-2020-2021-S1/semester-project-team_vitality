@@ -49,7 +49,7 @@ class Businesses(db.Model):
     
     @staticmethod
     def getAllBusinessesByMaxCapacity(mc):
-        return Businesses().query.filter_by(max_capacity=mc).all()
+        return db.session.query(Businesses).filter(Businesses.max_capacity>=mc)
 
     @staticmethod
     def getBusinessesByService(sid):
