@@ -59,7 +59,7 @@ export default function SignIn() {
     const classes = useStyles();
     // Login Component (Default)
     return (
-        <Container component="main" maxWidth="xs">
+        <Container className='registerbc-padding' component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
@@ -142,6 +142,7 @@ export default function SignIn() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        className='green-blue-btn'
                     >
                         Sign Up
                     </Button>
