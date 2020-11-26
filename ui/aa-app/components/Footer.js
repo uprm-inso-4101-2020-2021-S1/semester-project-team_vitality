@@ -12,7 +12,7 @@ const Footer = () => {
             <div>
                 <p>
                     &copy; Copyright ArrangeAll 2020
-            </p>
+                </p>
             </div>
         </footer>
     );

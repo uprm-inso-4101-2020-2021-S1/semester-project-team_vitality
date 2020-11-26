@@ -12,15 +12,15 @@ a {
 }
 
 #header {
-  color: #3cb2d3;
+  color: black;
+  /* color: #3cb2d3;*/
   text-decoration: none;
   height: 120px;
-  width: 100%;
   background: white;
 }
 
 .center{
-  width: 75%;
+  width: 95%;
   margin: 0px auto;
 }
 
@@ -35,10 +35,19 @@ a {
   display: block;
   float: left;
   height: 60px;
-  margin-top: -9px;
-  margin-right: -10px;
+  margin-top: -11px;
+  margin-right: 5px;
   animation: girar infinite 30s linear;
 }
+
+/* @keyframes girar {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+} */
 
 #brand {
   display: block;
@@ -47,17 +56,14 @@ a {
 }
 
 #border-top {
-  width: 100%;
   height: 5px;
-  background-color: rgba(73,155,234,1);
-  border-bottom: black;
+  background: linear-gradient(-45deg, lightgreen, rgba(73,155,234,1));
 }
 
 #menu{
-  width: 70%;
+  width: 40%;
   float:right;
   font-size: 18px;
-  border-top: black;
 }
 
 #menu ul{
@@ -81,39 +87,25 @@ a {
 }
 
 #menu a:hover{
-  color: #3cb2d3;
+  color: lightgreen;
 }
 
 #slider{
-  width: 100%;
-  height: 280px;
+  height: 320px;
   color: white;
   text-shadow: 0px 0px 5px #444;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-
-  /*DEGRADADO CSS*/
-  background: rgba(73,155,234,1);
-  background: -moz-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(81,175,247,1) 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(73,155,234,1)), color-stop(100%, rgba(81,175,247,1)));
-  background: -webkit-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(81,175,247,1) 100%);
-  background: -o-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(81,175,247,1) 100%);
-  background: -ms-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(81,175,247,1) 100%);
-  background: radial-gradient(ellipse at center, rgba(73,155,234,1) 0%, rgba(81,175,247,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#51aff7', GradientType=1 );
+  background: linear-gradient(-45deg, lightgreen, rgba(73,155,234,1));
 }
 
 #slider h1{
   margin-top: 0.2px;
   padding: 0px;
-  padding-top: 70px;
-  text-align: center;
+  padding-top: 60px;
 }
 
 #slider h3{
   margin-top: 0.2px;
   padding: 0px;
-  text-align: center;
 }
 
 #slider h4{
@@ -122,23 +114,27 @@ a {
   text-align: center;
 }
 
-#bbar{
-  width: 100%;
+#middle-bar {
   height: 300px;
   color: white;
-  text-shadow: 0px 0px 5px #444;
-  border-top: 1px solid #3cb2d3;
-  border-bottom: 1px solid #3cb2d3;
-
-  /*DEGRADADO CSS*/
-  background: #EFEFEF;
-  background: -moz-radial-gradient(center, ellipse cover, #EFEFEF 0%,#EFEFEF 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(73,155,234,1)), color-stop(100%, #EFEFEF));
-  background: -webkit-radial-gradient(center, ellipse cover, #EFEFEF 0%,#EFEFEF 100%);
-  background: -o-radial-gradient(center, ellipse cover, #EFEFEF 0%, #EFEFEF 100%);
-  background: -ms-radial-gradient(center, ellipse cover, #EFEFEF 0%, #EFEFEF 100%);
-  background: radial-gradient(ellipse at center, #EFEFEF 0%, #EFEFEF 100%);
+  background: black;
+  align-items: center;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#51aff7', GradientType=1 );
+}
+
+#middle-bar h1{
+  margin-top: 0.2px;
+  padding: 0px;
+  padding-top: 25px;
+}
+
+#middle-bar h3{
+  margin-top: 0.2px;
+  padding: 0px;
+}
+
+#appointment {
+  margin-top: 50px;
 }
 
 #bbar-card {
@@ -148,11 +144,19 @@ a {
   border: 2px solid black;
   border-radius: 4px;
   background-color: rgba(73,155,234,1);
-  box-shadow: 0px 0px 5px rgb(88, 88, 88);
 }
 
-#bbar-container {
-  padding-top: 50px;
+#services-container {
+  height: 400px;
+  background: linear-gradient(-45deg, lightgreen, rgba(73,155,234,1));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#bc-container {
+  height: 500px;
+  background: black;
 }
 
 .bbar-button{
@@ -185,13 +189,13 @@ a {
   text-align: center;
   color: inherit;
   text-decoration: none;
-  border: solid rgba(73,155,234,1);
+  border: solid white;
   border-radius: 5px;
 }
 
 .btn-white{
   display: block;
-  background: rgba(73,155,234,1);
+  background: linear-gradient(-20deg, lightgreen, rgba(73,155,234,1));
   color:white;
   padding: 10px;
   width: 150px;
@@ -232,7 +236,7 @@ a {
   height: 300px;
   text-align: center;
   text-decoration: none;
-  border: 2px solid rgba(73,155,234,1);
+  border: 2px solid lightgreen;
   border-radius: 4px;
   box-shadow: 0px 0px 5px rgb(88, 88, 88);
   background-color: #EFEFEF;
@@ -253,7 +257,7 @@ a {
   text-align: center;
   color: inherit;
   text-decoration: none;
-  border: 2px solid rgba(73,155,234,1);
+  border: 2px solid linear-gradient(-45deg, lightgreen, rgba(73,155,234,1));
   border-radius: 4px;
   box-shadow: 0px 0px 5px rgb(88, 88, 88);
   background-color: #EFEFEF;
@@ -268,11 +272,12 @@ a {
 }
 
 #footer{
-  background: #f7f7f7;
+  /* background: #f7f7f7; */
+  background: linear-gradient(-45deg, lightgreen, rgba(73,155,234,1));
   width: 100%;
   height: 70px;
   line-height: 70px;
-  color: #444;
+  color:black;
   text-align: center;
 }
 
