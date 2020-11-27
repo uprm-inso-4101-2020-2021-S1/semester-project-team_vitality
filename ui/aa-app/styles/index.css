@@ -336,30 +336,81 @@ a {
   padding-top: 53px;
 }
 
-#registergrid{
-  padding: 40px;
-  flex-grow: 1;
+#register-bg{
+  height: 600px;
+  background: black;
 }
 
-#registergrid .card{
-  height: 300px;
+.register-title {
   text-align: center;
-  text-decoration: none;
-  border: 2px solid lightgreen;
-  border-radius: 4px;
-  box-shadow: 0px 0px 5px rgb(88, 88, 88);
-  background-color: #EFEFEF;
+  color: white;
+  width: 100%;
 }
 
-#registergrid 
-.card:hover,
-.card:focus,
-.card:active {
-  color: lightgreen;
+.register-divs {
+  text-align: center;
+  color: black
+}
+
+#register-wrapper {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  grid-gap: 16px;
+  padding: 0 50px;
+  margin-bottom: 40px;
+}
+
+#register-card {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 320px;
+  padding: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+#register-card:hover {
+  transform: scale(1.02);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .registerbc-padding {
   padding-bottom: 60px;
+}
+
+.register-btn{
+  display: block;
+  background: linear-gradient(-20deg, lightgreen, rgba(73,155,234,1));
+  color:white;
+  padding: 10px;
+  width: 150px;
+  height: 40px;
+  margin: 0px auto;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: none;
+  text-decoration: none;
+  box-shadow: 0px 0px 5px rgb(88, 88, 88);
+  border-radius: 4px;
+  transition: 300ms all;
+}
+
+.register-btn:hover{
+  background: #444;
+  color:white;
+}
+
+#register-image {
+  height: 250px;
+  width: auto;
 }
 
 #main-grid {

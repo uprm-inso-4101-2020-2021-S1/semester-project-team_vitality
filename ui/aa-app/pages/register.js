@@ -1,52 +1,48 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 
 
 export default function OutlinedCard() {
     return (
-        <div id='registergrid'>
-            <Grid container spacing={6}>
-                <Grid item xs={6}>
-                    <Card className='card' variant="outlined">
-                        <CardContent>
-                            <Typography variant="h5" component="h2">
-                                Register as Customer
-                            </Typography>
-                            <hr/>
-                            <br/>
-                            <Typography color="textSecondary" gutterBottom>
-                                Lorem Ipsum is simply dummy text of the printing 
-                                and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <a href="/registerc" className="green-blue-btn">Register</a>
-                        </CardActions>
-                    </Card>
-                </Grid>
-                <Grid item xs={6}>
-                <Card className='card' variant="outlined">
-                        <CardContent>
-                            <Typography variant="h5" component="h2">
-                                Register as Business
-                            </Typography>
-                            <hr/>
-                            <br/>
-                            <Typography color="textSecondary" gutterBottom>
-                                Lorem Ipsum is simply dummy text of the printing 
-                                and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <a href="/registerb" className="green-blue-btn">Register</a>
-                        </CardActions>
-                    </Card>
-                </Grid>
+        <React.Fragment>
+            <Grid container id='register-bg'>
+            <Grid container>
+                <div className='register-title'>
+                    <h1>Register</h1>
+                </div>
             </Grid>
-        </div>
+            <Grid container>
+                <div id='register-wrapper'>
+                    <Card id='register-card'>
+                        <CardActionArea>
+                            <CardMedia id='register-image' image='/customer.png' />
+                            <CardContent>
+                                <h2 className='register-divs'>Register as Customer</h2>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <a href="/registerc" className="register-btn">Register</a>
+                        </CardActions>
+                    </Card>
+                    <Card id='register-card'>
+                        <CardActionArea>
+                            <CardMedia id='register-image' image='/business-portfolio.png' />
+                            <CardContent>
+                                <h2 className='register-divs'>Register as Business</h2>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <a href="/registerc" className="register-btn">Register</a>
+                        </CardActions>
+                    </Card>
+                </div>
+            </Grid>
+            </Grid>
+        </React.Fragment>
     );
 }
