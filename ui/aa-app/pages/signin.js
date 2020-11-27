@@ -116,6 +116,7 @@ export default function SignIn() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        className='green-blue-btn'
                     >
                         Sign In
                     </Button>

@@ -10,9 +10,10 @@ const Header = () => {
                 <div className="center">
                     {/* LOGO */}
                     <div id="logo">
+                        <img src="/logo.png" alt='Logo'></img>
                         <span id="brand">
                             <strong>Arrange</strong>All&trade;
-                            </span>
+                        </span>
                     </div>
 
                     {/* MENU */}
@@ -41,9 +42,10 @@ const Header = () => {
                 <div className="center">
                     {/* LOGO */}
                     <div id="logo">
+                        <img src="/logo.png" alt='Logo'></img>
                         <span id="brand">
                             <strong>Arrange</strong>All&trade;
-                        </span>
+                            </span>
                     </div>
 
                     {/* MENU */}
