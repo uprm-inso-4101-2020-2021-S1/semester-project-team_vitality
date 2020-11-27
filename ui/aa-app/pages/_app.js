@@ -8,8 +8,8 @@ import theme from '../src/theme';
 import styles from '../styles/index.css'
 
 //Components
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;

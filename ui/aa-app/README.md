@@ -13,7 +13,16 @@ npm install
 ```bash
 docker-compose build && docker-compose up -d
 ```
+## Running on development mode
 
+```bash
+npm run dev
+```
+## Run unit tests
+
+```bash
+npm test
+```
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
