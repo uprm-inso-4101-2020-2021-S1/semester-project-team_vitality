@@ -59,7 +59,6 @@ export default function SignIn() {
     const classes = useStyles();
     // Login Component (Default)
     return (
-        <Grid>
         <Container className='registerbc-padding' component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
