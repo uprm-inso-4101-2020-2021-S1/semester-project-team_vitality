@@ -2,13 +2,12 @@ from api.util.config import db
 from api.dao.users import Users
 from api.dao.businesses import Businesses
 from random import randint
-import datetime
 
 class Appointment(db.Model):
     __tablename__ = 'appointment'
     appt_id = db.Column(db.Integer, primary_key=True)
-    start_time = db.Column(db.DateTime)
-    end_time = db.Column(db.DateTime)
+    start_time = db.Column(db.String(50), nullable=False)
+    end_time = db.Column(db.String(50), nullable=False)
     confirmation_number = db.Column(db.Integer, nullable=True)
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.business_id'), nullable=False)
     business_name = db.Column(db.String(50), nullable=False)
@@ -22,6 +21,7 @@ class Appointment(db.Model):
         self.business_id = args.get('business_id')
         self.business_name = args.get('business_name')
         self.user_id = args.get('user_id')
+        self.number_of_customers = args.get('number_of_customers')
     
     @property
     def primaryKey(self):

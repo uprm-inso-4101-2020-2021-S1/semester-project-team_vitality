@@ -4,6 +4,7 @@ from api.dao.businesses import Businesses
 from api.util.utilities import Utilities
 from api.dao.users import Users
 import datetime as dt
+import pytz
 
 class AppointmentHandler:
 
@@ -84,11 +85,10 @@ class AppointmentHandler:
     def createAppt(json):
         validParams = Utilities.verify_parameters(json, ['business_id', 'business_name', 'start_time', 'end_time'])
         validParams['business_name'] = Businesses().getBusinessById(validParams['business_id']).business_name
-        validParams['start_time'] = dt.datetime.now()
-        validParams['end_time'] = dt.datetime.now()
         if validParams:
             try:
                 newAppt = Appointment(**validParams).create()
+                newAppt.business_name = Businesses().getBusinessById(validParams['business_id']).business_name
                 result = {
                     "message": "Success!",
                     "request": Utilities.to_dict(newAppt)
@@ -101,6 +101,7 @@ class AppointmentHandler:
     
     @staticmethod
     def userRegisterAppt(aid, uid):
+        validParams = Utilities.verify_parameters(json, ['number_of_customers'])
         try:
             appt = Appointment.updateAppt(aid, uid)
             result = {

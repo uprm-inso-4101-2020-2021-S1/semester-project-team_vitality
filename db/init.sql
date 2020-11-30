@@ -27,8 +27,8 @@ service_id INT REFERENCES services(service_id));
 
 CREATE TABLE appointment (
 appt_id BIGSERIAL NOT NULL PRIMARY KEY,
-start_time TIMESTAMP,
-end_time TIMESTAMP,
+start_time VARCHAR(50),
+end_time VARCHAR(50),
 confirmation_number INT,
 business_id INT NOT NULL REFERENCES businesses(business_id),
 business_name VARCHAR(100) NOT NULL,
@@ -52,6 +52,6 @@ INSERT INTO users(first_name, last_name, email, password, username, role) VALUES
 
 INSERT INTO businesses(business_name, address, city, zip_code, business_email, business_phone, max_capacity, owner_id, service_id) VALUES ('Jaranas', 'Calle Post', 'maya', '00680', 'jaranas@gmail.com', '787-111-2222', 25, 3, 1);
 
-INSERT INTO appointment(start_time, end_time, confirmation_number, business_id, business_name, user_id, number_of_customers) VALUES ('2020-11-12 12:30:00', '2020-11-12 1:00:00', 1234, 1, 'Jaranas', 1, 4);
-INSERT INTO appointment(start_time, end_time, confirmation_number, business_id, business_name, user_id, number_of_customers) VALUES ('2020-11-13 12:30:00', '2020-11-13 1:00:00', 5678, 1, 'Casianos', 1, 2);
-INSERT INTO appointment(start_time, end_time, confirmation_number, business_id, business_name, user_id, number_of_customers) VALUES ('2020-11-14 12:30:00', '2020-11-14 1:00:00', 4321, 1, 'Manas Cafe', 1, 1);
+INSERT INTO appointment(start_time, end_time, confirmation_number, business_id, business_name, user_id, number_of_customers) VALUES ('November 11 at 11:00 AM', 'November 11 at 12:00 AM', 1234, 1, 'Casianos', 1, 4);
+INSERT INTO appointment(start_time, end_time, confirmation_number, business_id, business_name, user_id, number_of_customers) VALUES ('November 13 at 2:00 PM', 'November 13 at 3:00 PM', 5678, 1, 'Jaranas', 1, 2);
+INSERT INTO appointment(start_time, end_time, confirmation_number, business_id, business_name, user_id, number_of_customers) VALUES ('November 15 at 8:00 AM', 'November 15 at 9:00 AM', 4321, 1, 'Don Cafe', 1, 1);
