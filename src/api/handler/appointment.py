@@ -3,8 +3,6 @@ from api.dao.appointment import Appointment
 from api.dao.businesses import Businesses
 from api.util.utilities import Utilities
 from api.dao.users import Users
-import datetime as dt
-import pytz
 
 class AppointmentHandler:
 
